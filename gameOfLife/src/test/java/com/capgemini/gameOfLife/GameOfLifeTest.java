@@ -12,12 +12,9 @@ import org.junit.Test;
 import com.capgemini.gameOfLife.GameOfLife;
 import com.capgemini.gameOfLife.Point;
 
-@SuppressWarnings("deprecation")
 public class GameOfLifeTest {
 
 	GameOfLife scoreGame = new GameOfLife();
-
-
 
 	@Test
 	public void testRemove_1_Cell() {
@@ -65,7 +62,7 @@ public class GameOfLifeTest {
 		// when
 		Set<Point> actual = scoreGame.scoreGame(startSpaceGame);
 		// then
-		assertFalse(contanisAll(expected, actual));
+		assertFalse(expected.contains(actual));
 	}
 
 	@Test
@@ -92,7 +89,7 @@ public class GameOfLifeTest {
 		// when
 		Set<Point> actual = scoreGame.scoreGame(startSpaceGame);
 		// then
-		assertFalse(contanisAll(expected, actual));
+		assertFalse(expected.contains(actual));
 	}
 
 	@Test
@@ -116,7 +113,7 @@ public class GameOfLifeTest {
 		// when
 		Set<Point> actual = scoreGame.scoreGame(startSpaceGame);
 		// then
-		assertFalse(contanisAll(expected, actual));
+		assertFalse(expected.contains(actual));
 	}
 
 	@Test
@@ -137,7 +134,7 @@ public class GameOfLifeTest {
 		// when
 		Set<Point> actual = scoreGame.scoreGame(startSpaceGame);
 		// then
-		assertTrue(isEqual(expected, actual));
+		assertEquals(expected, actual);
 	}
 
 	@Test
@@ -158,7 +155,7 @@ public class GameOfLifeTest {
 		// when
 		Set<Point> actual = scoreGame.scoreGame(startSpaceGame);
 		// then
-		assertTrue(isEqual(expected, actual));
+		assertEquals(expected, actual);
 	}
 
 	@Test
@@ -179,7 +176,7 @@ public class GameOfLifeTest {
 		// when
 		Set<Point> actual = scoreGame.scoreGame(startSpaceGame);
 		// then
-		assertTrue(isEqual(expected, actual));
+		assertEquals(expected, actual);
 	}
 
 	@Test
@@ -200,7 +197,7 @@ public class GameOfLifeTest {
 		// when
 		Set<Point> actual = scoreGame.scoreGame(startSpaceGame);
 		// then
-		assertTrue(isEqual(expected, actual));
+		assertEquals(expected, actual);
 
 	}
 
@@ -224,7 +221,7 @@ public class GameOfLifeTest {
 		// when
 		Set<Point> actual = scoreGame.scoreGame(startSpaceGame);
 		// then
-		assertTrue(isEqual(expected, actual));
+		assertEquals(expected, actual);
 
 	}
 
@@ -241,11 +238,10 @@ public class GameOfLifeTest {
 		expected.add(new Point(1, 1));
 		expected.add(new Point(1, 0));
 
-
 		// when
 		Set<Point> actual = scoreGame.scoreGame(startSpaceGame);
 		// then
-		assertTrue(isEqual(expected, actual));
+		assertEquals(expected, actual);
 
 	}
 
@@ -265,7 +261,7 @@ public class GameOfLifeTest {
 		// when
 		Set<Point> actual = scoreGame.scoreGame(startSpaceGame);
 		// then
-		assertTrue(isEqual(expected, actual));
+		assertEquals(expected, actual);
 
 	}
 
@@ -285,7 +281,7 @@ public class GameOfLifeTest {
 		// when
 		Set<Point> actual = scoreGame.scoreGame(startSpaceGame);
 		// then
-		assertTrue(isEqual(expected, actual));
+		assertEquals(expected, actual);
 	}
 
 	@Test
@@ -305,7 +301,7 @@ public class GameOfLifeTest {
 		// when
 		Set<Point> actual = scoreGame.scoreGame(startSpaceGame);
 		// then
-		assertTrue(isEqual(expected, actual));
+		assertEquals(expected, actual);
 	}
 
 	@Test
@@ -325,7 +321,7 @@ public class GameOfLifeTest {
 		// when
 		Set<Point> actual = scoreGame.scoreGame(startSpaceGame);
 		// then
-		assertTrue(isEqual(expected, actual));
+		assertEquals(expected, actual);
 	}
 
 	@Test
@@ -345,49 +341,10 @@ public class GameOfLifeTest {
 		expected.add(new Point(2, 3));
 		expected.add(new Point(3, 3));
 
-
 		// when
 		Set<Point> actual = scoreGame.scoreGame(startSpaceGame);
 		// then
-		assertTrue(isEqual(expected, actual));
-	}
-
-	private boolean isEqual(Set<Point> expected, Set<Point> actual) {
-		if (expected.size() == actual.size()) {
-			return contanisAll(expected, actual);
-		}
-		return false;
-	}
-
-	/**
-	 * Sprawdzenie czy wszystkie points zawierają się w container
-	 */
-	private boolean contanisAll(Set<Point> points, Set<Point> container) {
-		boolean isEqual = true;
-
-		for (Point point : points) {
-			isEqual = cointains(point, container);
-			if (!isEqual) {
-				break;
-			}
-		}
-
-		return isEqual;
-	}
-
-	/**
-	 * Sprawdzenie czy point zawiera się w container
-	 */
-	private boolean cointains(Point point, Set<Point> container) {
-		boolean contains = false;
-		for (Point point2 : container) {
-			contains = point.equals(point2);
-			if (contains) {
-				break;
-			}
-		}
-
-		return contains;
+		assertEquals(expected, actual);
 	}
 
 }
